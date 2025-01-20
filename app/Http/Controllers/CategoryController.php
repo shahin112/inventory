@@ -16,7 +16,7 @@ class CategoryController extends Controller
         $categories = Category::where('store_id', $request->user()->store_id)
             ->paginate(5);
 
-        // Append product_total to each category item in the paginated result
+         
         $categories->getCollection()->transform(function ($category) use ($request) {
             $product_total = Product::where('store_id', $request->user()->store_id)
                 ->where('category_id', $category->id)
